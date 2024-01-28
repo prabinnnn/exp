@@ -16,6 +16,7 @@ router.post("/", (res, req) => {
 });
 router.patch("/", (res, req, next) => {
   try {
+    console.log({ data: req.body });
     const data = Object.keys(req.body).length;
     if (!data) throw new ERROR("something else");
     res.json({ msg: "update the book" });
@@ -25,6 +26,7 @@ router.patch("/", (res, req, next) => {
 });
 router.delete("/", (res, req, next) => {
   try {
+    console.log({ data: req.body });
     const data = Object.keys(req.body).length;
     if (!data) throw new ERROR("something else");
     res.json({ msg: "delete  the book" });

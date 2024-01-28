@@ -4,6 +4,7 @@ router.get("/", (res, req) => {
 });
 router.put("/:id", (res, req, next) => {
   try {
+    console.log({ body: req.body });
     const { id } = req.param;
     if (!id) throw new ERROR("something else");
     res.json({ msg: "create a new user" });
@@ -12,20 +13,23 @@ router.put("/:id", (res, req, next) => {
   }
 });
 router.post("/", (res, req) => {
+  console.log({ body: req.body });
   res.json({ msg: "hello from user" });
 });
-router.patch("/", (res, req, next) => {
+router.patch("/:data", (res, req, next) => {
   try {
-    Object.keys(({ id } = req.body)).length;
-    if (!id) throw new ERROR("something else");
+    console.log({ data: req.body });
+    const data = Object.keys(req.body).length;
+    if (!data) throw new ERROR("something else");
     res.json({ msg: "update the user" });
   } catch (e) {
     next(e);
   }
 });
-router.delete("/", (res, req, next) => {
+router.delete("/:id", (res, req, next) => {
   try {
-    Object.keys(({ id } = req.body)).length;
+    console.log({ id: req.body });
+    const id = Object.keys(req.body).length;
     if (!id) throw new ERROR("something else");
     res.json({ msg: "delete  the user" });
   } catch (e) {
